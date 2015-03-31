@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Welcome</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Start Activity start -->
+    <string name="welcome">GitHub</string>
+    <!-- Start Activity end-->
+</resources>
