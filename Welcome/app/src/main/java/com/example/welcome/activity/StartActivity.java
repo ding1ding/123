@@ -8,13 +8,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.PopupWindow;
+import android.widget.TimePicker;
 
 import com.example.welcome.R;
 import com.example.welcome.activity.base.MyBaseActivity;
 
+import java.util.Calendar;
+
 
 public class StartActivity extends MyBaseActivity {
+
+    private DatePicker datePicker;
+    private TimePicker timePicker;
+
+    private EditText editTextOfDate;
+    private EditText editTextOfTime;
+
+    private String mDateString = "%d年%d月%d日";
+    private String mTimeString = "%d时%d分";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +65,27 @@ public class StartActivity extends MyBaseActivity {
     protected void initView() {
         Button button = (Button) findViewById(R.id.button_begin);
         button.setOnClickListener(this);
+        datePicker = (DatePicker) findViewById(R.id.date_picker);
+        timePicker = (TimePicker) findViewById(R.id.time_picker);
+        editTextOfDate = (EditText) findViewById(R.id.edittext_date);
+        editTextOfTime = (EditText) findViewById(R.id.edittext_time);
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        editTextOfDate.setText(String.format(mDateString,year,month+1,day));
+        datePicker.init(year,month,day,new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                editTextOfDate.setText(String.format(mDateString,year,monthOfYear+1,dayOfMonth));
+            }
+        });
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                editTextOfDate.setText(String.format(mTimeString,hourOfDay,minute));
+            }
+        });
 
     }
 
