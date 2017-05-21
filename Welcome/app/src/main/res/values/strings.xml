@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Welcome</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Start Activity start -->
+    <string name="welcome">GitHub</string>
+    <string name="button_wechat_login">WeChat Login</string>
+    <string name="button_qq_login">QQ Login</string>
+    <string name="begin">BEGIN</string>
+    <!-- Start Activity end-->
+</resources>
